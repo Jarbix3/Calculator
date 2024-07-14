@@ -9,12 +9,11 @@ body {
   align-items: center;
   height: 98vh;
 }
-#title{
+#title {
   display: flex;
   justify-content: center;
-  font-family: 'Orbitron',sans-serif;
+  font-family: "Orbitron", sans-serif;
   font-weight: bold;
-
 }
 #app {
   display: flex;
@@ -47,7 +46,7 @@ body {
   flex-wrap: nowrap;
   margin-right: 4px;
   font-size: 4vh;
-  font-family: 'Orbitron',sans-serif;
+  font-family: "Orbitron", sans-serif;
   overflow: hidden;
 }
 
@@ -72,12 +71,11 @@ button {
   width: 23%;
   font-weight: bolder;
   font-size: 2.5vh;
-  font-family: 'Orbitron',sans-serif;
+  font-family: "Orbitron", sans-serif;
   background-color: blanchedalmond;
   border: 3px black solid;
   border-radius: 6px;
 }
-
 
 #AC,
 #signswap,
@@ -87,7 +85,6 @@ button {
 #add,
 #multiply {
   background-color: rgb(221, 202, 173);
-  
 }
 
 #AC:active,
@@ -99,23 +96,21 @@ button {
 #multiply:active,
 #equal:active {
   background-color: rgb(194, 176, 149);
-  
 }
 
 #equal {
   background-color: rgb(189, 84, 42);
 }
 
-#credits{
+#credits {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
   margin-top: 2vh;
   margin-right: 2vh;
-  font-family: 'Orbitron',sans-serif;
+  font-family: "Orbitron", sans-serif;
   font-weight: bold;
 }
-
 
 @media only screen and (max-width: 1000px) {
   #app {
