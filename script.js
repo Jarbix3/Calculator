@@ -11,7 +11,6 @@ const operation = {
   selected: false,
 };
 
-
 function sum(a, b) {
   return a + b;
 }
@@ -48,34 +47,35 @@ function operate(a, b, oper) {
   }
 }
 
-
-
 const updateFirst = () => (state.first = parseInt(state.display));
 const updateSecond = () => (state.second = parseInt(state.display));
 const clearDisplay = () => (state.display = "");
 
 const displayArea = document.querySelector("#displaytext");
-displayArea.textContent = '0'
+displayArea.textContent = "0";
 const updateDisplayArea = () => (displayArea.textContent = state.display);
-
-
 
 const operButtons = document.querySelectorAll(".operand");
 operButtons.forEach((oper) => {
   oper.addEventListener("click", function () {
+    if (state.operator && operation.selected) {
+      state.operator = oper.textContent;
+      // Allow to change operator before digit input
+    }
     if (state.display && !operation.selected) {
       if (operation.inProgress) {
         updateSecond();
         state.display = operate(state.first, state.second, state.operator);
         state.operator = oper.textContent;
         updateDisplayArea();
+        // Allow to chain operators
       }
       updateFirst();
       operation.inProgress = true;
       operation.selected = true;
       state.operator = oper.textContent;
+      //Store first variable and change operation status
     }
-
   });
 });
 
@@ -86,53 +86,57 @@ digits.forEach((digit) => {
       clearDisplay();
       operation.selected = false;
       operation.complete = false;
+      //Delete displayed text after operand input
     }
-    if(state.display == '0')
-    {
+    if (state.display == "0") {
       state.display = digit.id;
       updateDisplayArea();
-    }
-    else{state.display += digit.id;
-    updateDisplayArea();
+      //Delete 0 in display after AC or startup
+    } else {
+      state.display += digit.id;
+      updateDisplayArea();
+      //Show input
     }
   });
 });
 
-
-const toggle = document.querySelector(".toggle");
-toggle.addEventListener('click',function()
-{
-  
-    if (state.display && !operation.selected) {
-      if (state.display.startsWith("-"))
-        state.display = state.display.substring(1);
-      else state.display = "-" + state.display;
-    }
+/*const toggle = document.querySelector(".toggle");
+toggle.addEventListener("click", function () {
+  if (state.display && !operation.selected) {
+    state.display = toString(state.display);
+    if (state.display.startsWith("-"))
+      state.display = state.display.substring(1);
+    else state.display = '-' + state.display;
+    //Allow sign swap
+  }
   updateDisplayArea();
-})
+});*/ //It only works for the first value input
 
-const clear = document.querySelector('.clear');
-clear.addEventListener('click',function(){
+const clear = document.querySelector(".clear");
+clear.addEventListener("click", function () {
   state.display = "0";
   state.first = 0;
-  state.second= 0;
-  state.operator= "";
-  
-  
+  state.second = 0;
+  state.operator = "";
+
   operation.complete = false;
   operation.inProgress = false;
   operation.selected = false;
-updateDisplayArea();  
+  updateDisplayArea();
+});
 
-})
-
-const equal = document.querySelector('.equal');
-equal.addEventListener('click',function(){
-  updateSecond();
-  state.display = operate(state.first, state.second, state.operator);
-  
+const equal = document.querySelector(".equal");
+equal.addEventListener("click", function () {
+  if (state.first != 0 && operation.inProgress) {
+    updateSecond();
+    state.display = operate(state.first, state.second, state.operator);
+    //Check first digit to be valid and operation to be on
+  }
+  if (state.first == 0) {
+    updateFirst();
+    //Store value in first
+  }
   updateDisplayArea();
   operation.inProgress = false;
   operation.complete = true;
-
-})
+});

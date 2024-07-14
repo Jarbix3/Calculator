@@ -1,36 +1,44 @@
 body {
-  background-color: rgb(187, 204, 216);
+  background-color: rgb(134, 178, 209);
 }
 
 #container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 98vh;
 }
+#title{
+  display: flex;
+  justify-content: center;
+  font-family: 'Orbitron',sans-serif;
+  font-weight: bold;
 
+}
 #app {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
 
-  width: 22vw;
-  height: 38vh;
-  background-color: whitesmoke;
+  width: 32vw;
+  height: 52vh;
+  background-color: rgb(187, 115, 115);
   border-radius: 24px;
-  border: 2px black solid;
-  box-shadow: 0px 0px 10px black;
+  border: 4px black solid;
+  box-shadow: 0px 0px 10px rgb(92, 92, 92);
 }
 
 #display {
   display: flex;
-  color: white;
-  background-color: black;
+  color: rgb(0, 0, 0);
+  background-color: rgb(182, 181, 175);
   justify-content: flex-end;
   align-items: flex-end;
-  border-radius: 12px;
+  border-radius: 5px;
+  border: 4px black solid;
   margin: 8px auto 8px;
-  height: 15%;
+  height: 20%;
   width: 95%;
 }
 
@@ -38,7 +46,8 @@ body {
   box-sizing: border-box;
   flex-wrap: nowrap;
   margin-right: 4px;
-  font-size: 3vh;
+  font-size: 4vh;
+  font-family: 'Orbitron',sans-serif;
   overflow: hidden;
 }
 
@@ -49,7 +58,7 @@ body {
 #rowFive {
   color: black;
   display: flex;
-  height: 6vh;
+  height: 7vh;
   justify-content: center;
   align-items: center;
   gap: 0.5%;
@@ -62,11 +71,13 @@ button {
   height: 90%;
   width: 23%;
   font-weight: bolder;
-  font-size: 2vh;
+  font-size: 2.5vh;
+  font-family: 'Orbitron',sans-serif;
   background-color: blanchedalmond;
-  border: 2px black solid;
+  border: 3px black solid;
   border-radius: 6px;
 }
+
 
 #AC,
 #signswap,
@@ -76,16 +87,40 @@ button {
 #add,
 #multiply {
   background-color: rgb(221, 202, 173);
+  
+}
+
+#AC:active,
+#signswap:active,
+#percent:active,
+#divide:active,
+#substract:active,
+#add:active,
+#multiply:active,
+#equal:active {
+  background-color: rgb(194, 176, 149);
+  
 }
 
 #equal {
-  background-color: rgb(211, 189, 157);
+  background-color: rgb(189, 84, 42);
 }
+
+#credits{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-top: 2vh;
+  margin-right: 2vh;
+  font-family: 'Orbitron',sans-serif;
+  font-weight: bold;
+}
+
 
 @media only screen and (max-width: 1000px) {
   #app {
-    height: 50vh;
-    width: 40vw;
+    height: 60vh;
+    width: 50vw;
   }
 
   #rowOne,
